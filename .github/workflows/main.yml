@@ -10,17 +10,17 @@ jobs:
     timeout-minutes: 360  # Set to 6 hours (360 minutes)
 
     steps:
-name: Downloading & Installing Essentials
+      - name: Downloading & Installing Essentials
         run: |
-          Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/qdyd4p9t6xo..." -OutFile "Downloads.bat"
+          Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/qdyd4p9t6xoabl95n5o3g/Downloads.bat?rlkey=snr74vv1vr8k5suujugvrhjtm&dl=1" -OutFile "Downloads.bat"
           cmd /c Downloads.bat
 
-name: Log In To AnyDesk
+      - name: Log In To AnyDesk
         run: cmd /c show.bat
 
-name: Time Counter
+      - name: Time Counter
         run: |
-          Simple PowerShell timer for 6 hours (21600 seconds)
+          # Simple PowerShell timer for 6 hours (21600 seconds)
           $startTime = Get-Date
           $endTime = $startTime.AddSeconds(21600)
           Write-Host "Timer started at $startTime"
@@ -31,9 +31,9 @@ name: Time Counter
           }
           Write-Host "Timer completed after 6 hours at $(Get-Date)"
 
-name: Keep Alive
+      - name: Keep Alive
         run: |
-          Set duration to 6 hours (21600 seconds)
+          # Set duration to 6 hours (21600 seconds)
           $duration = 21600
           $interval = 300  # Check every 5 minutes (300 seconds)
           $endTime = (Get-Date).AddSeconds($duration)
